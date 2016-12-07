@@ -2,6 +2,17 @@
 <html>
 <body>
 <h2>Hello from Dialog A!</h2>
-<img src="main/img/Koala.jpg"/>
+<table class="table table-hover">
+    <thead>
+        <th>tytul1</th>
+        <th>tytul2</th>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="item in data.tasks">
+            <td>{{item.id}}</td>
+            <td>{{item.title}}</td>
+        </tr>
+    </tbody>
+</table>
 </body>
 </html>
