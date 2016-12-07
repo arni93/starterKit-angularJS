@@ -1,0 +1,36 @@
+[{
+    "id": 1,
+    "title": "zrob zakupy",
+    "category": "dom",
+    "priority": 10,
+    "content": "kup kurczaka ryz i warzywa",
+    "date": "2016-12-08"
+}, {
+    "id": 2,
+    "title": "spotkanie w pracy",
+    "category": "praca",
+    "priority": 5,
+    "content": "zorganizuj spotkanie z okazji grilla",
+    "date": "2016-12-20"
+}, {
+    "id": 3,
+    "title": "zrob sprawozdanie z fizyki",
+    "category": "uczelnia",
+    "priority": "4",
+    "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
+    "date": "2016-12-12"
+}, {
+    "id": 4,
+    "title": "zakupy",
+    "category": "zycie",
+    "priority": 10,
+    "content": "kup prezerwatywy",
+    "date": "2016-12-08"
+}, {
+    "id": 5,
+    "title": "urodziny",
+    "category": "rodzina",
+    "priority": "2",
+    "content": "babcia ma urodziny w weekend",
+    "date": "2016-12-09"
+}]
