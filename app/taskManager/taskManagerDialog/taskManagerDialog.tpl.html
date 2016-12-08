@@ -2,6 +2,9 @@
 <html>
 <body>
 <h2>Your task manager</h2>
+<label for="searchExpression">search expression: </label>
+<input type="text" id="searchExpression" ng-model="searchExpression">
+
 <table class="table table-hover">
     <thead>
         <th>title</th>
@@ -11,7 +14,7 @@
         <th>date</th>
     </thead>
     <tbody>
-        <tr data-ng-repeat="item in data.tasks">
+        <tr data-ng-repeat="item in data.tasks | filter:search">
             <td>{{item.title}}</td>
             <td>{{item.category}}</td>
             <td>{{item.priority}}</td>

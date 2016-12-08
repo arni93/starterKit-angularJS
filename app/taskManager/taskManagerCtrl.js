@@ -3,6 +3,38 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function ($scope
     $scope.data = {
         tasks: []
     };
+    $scope.searchExpression = "";
+
+    $scope.search = function (item) {
+        if ($scope.searchExpression == "") {
+            return true;
+        }
+        var matchOnTitle, matchOnCategory, matchOnPriority, matchOnContent, matchOnDate, titleString, categoryString, priorityString, contentString, dateString, expr;
+        titleString = '' + item.title;
+        categoryString = '' + item.category;
+        priorityString = '' + item.priority;
+        contentString = '' + item.content;
+        dateString = '' + item.date;
+        expr = $scope.searchExpression.toLowerCase();
+
+        if (titleString.toLowerCase().indexOf(expr) >= 0) {
+            return true;
+        }
+        if (categoryString.toLowerCase().indexOf(expr) >= 0) {
+            return true;
+        }
+        if (priorityString.toLowerCase().indexOf(expr) >= 0) {
+            return true;
+        }
+        if (contentString.toLowerCase().indexOf(expr) >= 0) {
+            return true;
+        }
+        if (dateString.toLowerCase().indexOf(expr) >= 0) {
+            return true;
+        }
+        return false;
+    }
+
     angular.copy(tasks.data, $scope.data.tasks);
 
     $scope.addTask = function () {
