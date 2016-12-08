@@ -6,30 +6,36 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function ($scope
     angular.copy(tasks.data, $scope.data.tasks);
 
     $scope.addTask = function () {
-        $modal.open({
-            templateUrl: 'taskManager/taskModalDialog/taskModalDialog.html',
+        var modalInstance = $modal.open({
+            templateUrl: 'taskManager/addTaskModalDialog/addTaskModalDialog.html',
             controller: 'modalController',
             size: 'lg',
             resolve: {
-                selectedTask: function () {
+                newTask: function () {
                     return {
-                        "title": "",
-                        "category": "",
+                        "title": "insert title",
+                        "category": "insert category",
                         "priority": 1,
-                        "content": "",
-                        "date": ""
+                        "content": "insert content",
+                        "date": "2016-12-22"
                     }
                 }
             }
         });
+        modalInstance.result.then(function (data) {
+            $scope.data.tasks.push(data);
+        })
     };
 
-}).controller('modalController', function ($scope, $modalInstance, selectedTask) {
+}).controller('modalController', function ($scope, $modalInstance, newTask) {
     'use strict';
     $scope.data = {
-        selectedTask: {}
+        newTask: {}
     };
 
-    angular.copy(selectedTask, $scope.data.selectedTask);
+    angular.copy(newTask, $scope.data.newTask);
 
+    $scope.ok = function () {
+        $modalInstance.close($scope.data.newTask);
+    }
 })

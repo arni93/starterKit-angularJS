@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>add new Task</title>
+</head>
+
+<body>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">add new task</h3>
+        </div>
+        <div class="modal-body">
+            <form name="form.add">
+                <div class="form-group">
+                    <label for="title">title: </label>
+                    <input id="title" type="text" name="Title" class="form-control" ng-model="data.newTask.title">
+                </div>
+                <div class="form-group">
+                    <label for="datePicker">Date: </label>
+                    <input id="datePicker" type="date" name="datePicking" class="form-control" ng-model="data.newTask.date">
+                </div>
+            </form>
+            
+
+            <p>Title: {{data.newTask.title}}</p>
+            <p>Category: {{data.newTask.category}}</p>
+            <p>Priority: {{data.newTask.priority}}</p>
+            <p>Content: {{data.newTask.content}}</p>
+            <p>Date: {{data.newTask.date}}</p>
+        </div>
+        <div class="modal-footer ">
+            <button class="btn btn-primary" data-ng-click="ok()">OK</button>
+        </div>
+    </div>
+</body>
+
+</html>
