@@ -32,7 +32,6 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function ($scope
     $scope.data = {
         newTask: {}
     };
-    $scope.dt = new Date();
     $scope.open = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();

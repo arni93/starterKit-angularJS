@@ -12,28 +12,41 @@
             <h3 class="modal-title">add new task</h3>
         </div>
         <div class="modal-body">
-
-            <!---->
-            <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
-            <div class="form-horizontal">
-                <div class="input-group">
-                    <input type="text" class="form-control" datepicker-popup="shortDate" ng-model="dt" is-open="opened" />
-                    <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              <i class="icon-calendar"></i></button> <b><- button not working</b>
-              </span>
-                </div>
-            </div>
-            <!---->
-
             <form name="form.add">
                 <div class="form-group">
                     <label for="title">title: </label>
                     <input id="title" type="text" name="Title" class="form-control" ng-model="data.newTask.title">
                 </div>
                 <div class="form-group">
-                    <label for="datePicker">Date: </label>
-                    <input id="datePicker" type="text" name="datePicking" class="form-control" ng-model="data.newTask.date">
+                    <label for="categoryInput">category: </label>
+                    <input id="categoryInput" type="text" name="Category" class="form-control" ng-model="data.newTask.category">
+                </div>
+
+                <div class="form-group">
+                    <label for="selectPriority">Select list:</label>
+                    <select id="selectPriority" class="form-control" name="PriorityList" ng-model="data.newTask.priority">
+                    <option>Very low</option>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                    <option>Very high</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="contentInput">content:</label>
+                    <textarea class="form-control" type="text" rows="5" id="contentInput" ng-model="data.newTask.content"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateInput">date:</label>
+                    <div class="input-group">
+                        <input id="dateInput" type="text" class="form-control" datepicker-popup="shortDate" ng-model="data.newTask.date" is-open="opened"
+                        />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
                 </div>
             </form>
 
@@ -43,7 +56,6 @@
             <p>Priority: {{data.newTask.priority}}</p>
             <p>Content: {{data.newTask.content}}</p>
             <p>Date: {{data.newTask.date}}</p>
-            <p>DateFromDatePicker: {{dt}}</p>
         </div>
         <div class="modal-footer ">
             <button class="btn btn-primary" data-ng-click="ok()">OK</button>
