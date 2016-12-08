@@ -1,9 +1,9 @@
-angular.module('app.taskManager', ['ngRoute', 'app.taskManager.templates'])
+angular.module('app.taskManager', ['ngRoute', 'app.taskManager.templates','ui.bootstrap'])
     .config(function($routeProvider) {
         'use strict';
         $routeProvider.when('/taskManager/taskManagerDialog', {
             templateUrl: 'taskManager/taskManagerDialog/taskManagerDialog.html',
-            controller: 'MyFirstController',
+            controller: 'taskManagerCtrl',
             resolve: {
                 tasks : function($http){
                     return $http.get('/taskManager/tasks.json');

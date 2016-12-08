@@ -1,4 +1,5 @@
-[{
+[
+    {
     "id": 1,
     "title": "zrob zakupy",
     "category": "dom",
@@ -33,4 +34,112 @@
     "priority": "2",
     "content": "babcia ma urodziny w weekend",
     "date": "2016-12-09"
-}]
+},
+ {
+    "id": 6,
+    "title": "zrob zakupy",
+    "category": "dom",
+    "priority": 10,
+    "content": "kup kurczaka ryz i warzywa",
+    "date": "2016-12-08"
+}, {
+    "id": 7,
+    "title": "spotkanie w pracy",
+    "category": "praca",
+    "priority": 5,
+    "content": "zorganizuj spotkanie z okazji grilla",
+    "date": "2016-12-20"
+}, {
+    "id": 8,
+    "title": "zrob sprawozdanie z fizyki",
+    "category": "uczelnia",
+    "priority": "4",
+    "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
+    "date": "2016-12-12"
+}, {
+    "id": 9,
+    "title": "zakupy",
+    "category": "zycie",
+    "priority": 10,
+    "content": "kup prezerwatywy",
+    "date": "2016-12-08"
+}, {
+    "id": 10,
+    "title": "urodziny",
+    "category": "rodzina",
+    "priority": "2",
+    "content": "babcia ma urodziny w weekend",
+    "date": "2016-12-09"
+},
+ {
+    "id": 11,
+    "title": "zrob zakupy",
+    "category": "dom",
+    "priority": 10,
+    "content": "kup kurczaka ryz i warzywa",
+    "date": "2016-12-08"
+}, {
+    "id": 12,
+    "title": "spotkanie w pracy",
+    "category": "praca",
+    "priority": 5,
+    "content": "zorganizuj spotkanie z okazji grilla",
+    "date": "2016-12-20"
+}, {
+    "id": 13,
+    "title": "zrob sprawozdanie z fizyki",
+    "category": "uczelnia",
+    "priority": "4",
+    "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
+    "date": "2016-12-12"
+}, {
+    "id": 14,
+    "title": "zakupy",
+    "category": "zycie",
+    "priority": 10,
+    "content": "kup prezerwatywy",
+    "date": "2016-12-08"
+}, {
+    "id": 15,
+    "title": "urodziny",
+    "category": "rodzina",
+    "priority": "2",
+    "content": "babcia ma urodziny w weekend",
+    "date": "2016-12-09"
+}, {
+    "id": 16,
+    "title": "zrob zakupy",
+    "category": "dom",
+    "priority": 10,
+    "content": "kup kurczaka ryz i warzywa",
+    "date": "2016-12-08"
+}, {
+    "id": 17,
+    "title": "spotkanie w pracy",
+    "category": "praca",
+    "priority": 5,
+    "content": "zorganizuj spotkanie z okazji grilla",
+    "date": "2016-12-20"
+}, {
+    "id": 18,
+    "title": "zrob sprawozdanie z fizyki",
+    "category": "uczelnia",
+    "priority": "4",
+    "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
+    "date": "2016-12-12"
+}, {
+    "id": 19,
+    "title": "zakupy",
+    "category": "zycie",
+    "priority": 10,
+    "content": "kup prezerwatywy",
+    "date": "2016-12-08"
+}, {
+    "id": 20,
+    "title": "urodziny",
+    "category": "rodzina",
+    "priority": "2",
+    "content": "babcia ma urodziny w weekend",
+    "date": "2016-12-09"
+}
+]
