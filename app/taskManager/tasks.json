@@ -1,35 +1,35 @@
 [
     {
     "id": 1,
-    "title": "zrob zakupy",
+    "title": "zrob zakupy1",
     "category": "dom",
     "priority": 10,
     "content": "kup kurczaka ryz i warzywa",
     "date": "2016-12-08"
 }, {
     "id": 2,
-    "title": "spotkanie w pracy",
+    "title": "spotkanie w pracy1",
     "category": "praca",
     "priority": 5,
     "content": "zorganizuj spotkanie z okazji grilla",
     "date": "2016-12-20"
 }, {
     "id": 3,
-    "title": "zrob sprawozdanie z fizyki",
+    "title": "zrob sprawozdanie z fizyki1",
     "category": "uczelnia",
     "priority": "4",
     "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
     "date": "2016-12-12"
 }, {
     "id": 4,
-    "title": "zakupy",
+    "title": "zakupy1",
     "category": "zycie",
     "priority": 10,
     "content": "kup prezerwatywy",
     "date": "2016-12-08"
 }, {
     "id": 5,
-    "title": "urodziny",
+    "title": "urodziny1",
     "category": "rodzina",
     "priority": "2",
     "content": "babcia ma urodziny w weekend",
@@ -37,35 +37,35 @@
 },
  {
     "id": 6,
-    "title": "zrob zakupy",
+    "title": "zrob zakupy2",
     "category": "dom",
     "priority": 10,
     "content": "kup kurczaka ryz i warzywa",
     "date": "2016-12-08"
 }, {
     "id": 7,
-    "title": "spotkanie w pracy",
+    "title": "spotkanie w pracy2",
     "category": "praca",
     "priority": 5,
     "content": "zorganizuj spotkanie z okazji grilla",
     "date": "2016-12-20"
 }, {
     "id": 8,
-    "title": "zrob sprawozdanie z fizyki",
+    "title": "zrob sprawozdanie z fizyki2",
     "category": "uczelnia",
     "priority": "4",
     "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
     "date": "2016-12-12"
 }, {
     "id": 9,
-    "title": "zakupy",
+    "title": "zakupy2",
     "category": "zycie",
     "priority": 10,
     "content": "kup prezerwatywy",
     "date": "2016-12-08"
 }, {
     "id": 10,
-    "title": "urodziny",
+    "title": "urodziny2",
     "category": "rodzina",
     "priority": "2",
     "content": "babcia ma urodziny w weekend",
@@ -73,70 +73,70 @@
 },
  {
     "id": 11,
-    "title": "zrob zakupy",
+    "title": "zrob zakupy3",
     "category": "dom",
     "priority": 10,
     "content": "kup kurczaka ryz i warzywa",
     "date": "2016-12-08"
 }, {
     "id": 12,
-    "title": "spotkanie w pracy",
+    "title": "spotkanie w pracy3",
     "category": "praca",
     "priority": 5,
     "content": "zorganizuj spotkanie z okazji grilla",
     "date": "2016-12-20"
 }, {
     "id": 13,
-    "title": "zrob sprawozdanie z fizyki",
+    "title": "zrob sprawozdanie z fizyki3",
     "category": "uczelnia",
     "priority": "4",
     "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
     "date": "2016-12-12"
 }, {
     "id": 14,
-    "title": "zakupy",
+    "title": "zakupy3",
     "category": "zycie",
     "priority": 10,
     "content": "kup prezerwatywy",
     "date": "2016-12-08"
 }, {
     "id": 15,
-    "title": "urodziny",
+    "title": "urodziny3",
     "category": "rodzina",
     "priority": "2",
     "content": "babcia ma urodziny w weekend",
     "date": "2016-12-09"
 }, {
     "id": 16,
-    "title": "zrob zakupy",
+    "title": "zrob zakupy4",
     "category": "dom",
     "priority": 10,
     "content": "kup kurczaka ryz i warzywa",
     "date": "2016-12-08"
 }, {
     "id": 17,
-    "title": "spotkanie w pracy",
+    "title": "spotkanie w pracy4",
     "category": "praca",
     "priority": 5,
     "content": "zorganizuj spotkanie z okazji grilla",
     "date": "2016-12-20"
 }, {
     "id": 18,
-    "title": "zrob sprawozdanie z fizyki",
+    "title": "zrob sprawozdanie z fizyki4",
     "category": "uczelnia",
     "priority": "4",
     "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
     "date": "2016-12-12"
 }, {
     "id": 19,
-    "title": "zakupy",
+    "title": "zakupy4",
     "category": "zycie",
     "priority": 10,
     "content": "kup prezerwatywy",
     "date": "2016-12-08"
 }, {
     "id": 20,
-    "title": "urodziny",
+    "title": "urodziny4",
     "category": "rodzina",
     "priority": "2",
     "content": "babcia ma urodziny w weekend",

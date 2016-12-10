@@ -1,28 +1,53 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h2>Your task manager</h2>
-<label for="searchExpression">search expression: </label>
-<input type="text" id="searchExpression" ng-model="searchExpression">
 
-<table class="table table-hover">
-    <thead>
-        <th>title</th>
-        <th>category</th>
-        <th>priority</th>
-        <th>content</th>
-        <th>date</th>
-    </thead>
-    <tbody>
-        <tr data-ng-repeat="item in data.tasks | filter:search">
-            <td>{{item.title}}</td>
-            <td>{{item.category}}</td>
-            <td>{{item.priority}}</td>
-            <td>{{item.content}}</td>
-            <td>{{item.date}}</td>
-        </tr>
-    </tbody>
-</table>
-<button data-ng-click="addTask()" class="btn btn-default">Add new Task</button>
+<body>
+    <h2>Your task manager</h2>
+
+    <div class="row">
+        <div class="col-sm-2 text-left">
+            <label for="searchExpression">search expression: </label>
+        </div>
+        <div class="form-input">
+            <input type="text" id="searchExpression" ng-model="searchExpression">
+        </div>
+    </div>
+
+
+    <table class="table table-hover">
+        <thead>
+            <th>title:</th>
+            <th>category:</th>
+            <th>priority:</th>
+            <th>content:</th>
+            <th>date:</th>
+        </thead>
+        <tbody>
+            <!--<tr data-ng-repeat="item in filteredTasks || data.tasks | filter:search">-->
+            <tr data-ng-repeat="item in data.tasks | filter:search | orderBy:'-date' as filteredTasks" ng-if="($index >= (currentPage-1)*itemsPerPage) && ($index < currentPage*itemsPerPage)"
+                data-ng-click="selectRow($index)" data-ng-class="{'active': selectedRowIndex === $index}" data-ng-dblclick="editSelectedTask($index)">
+                <td>{{item.title}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.priority}}</td>
+                <td>{{item.content}}</td>
+                <td>{{item.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <label class="col-sm-2 col-md-offset-9" for="selectPaginationItemsPerPage">change list size</label>
+        <select class="col-sm-1" id="selectPaginationItemsPerPage" class="form-control" ng-model="itemsPerPage">
+                    <option>5</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+    </div>
+    <div class="text-center">
+        <pagination total-items="filteredTasks.length" items-per-page="itemsPerPage" ng-model="currentPage" max-size=5 class="pagination-sm"
+            boundary-links="true"></pagination>
+    </div>
+    <button class="btn btn-default col-sm-2" data-ng-click="addTask()" >Add new Task</button>
+    <button class="btn btn-default col-sm-2 col-md-offset-8" data-ng-hide="selectedRowIndex===undefined" data-ng-click="removeSelectedTask(selectedRowIndex)">delete task</button>
 </body>
+
 </html>
