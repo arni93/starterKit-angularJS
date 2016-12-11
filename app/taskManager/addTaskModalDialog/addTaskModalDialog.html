@@ -18,8 +18,16 @@
                     <input id="title" type="text" name="Title" class="form-control" ng-model="data.newTask.title">
                 </div>
                 <div class="form-group">
-                    <label for="categoryInput">category: </label>
-                    <input id="categoryInput" type="text" name="Category" class="form-control" ng-model="data.newTask.category">
+                    <label for="selectCategory">category: </label>
+                    <select id="selectCategory" class="form-control" name="categoryList" ng-model="data.newTask.category">
+                    <option>meeting</option>
+                    <option>reminder</option>
+                    <option>shopping</option>
+                    <option>home</option>
+                    <option>job</option>
+                    <option>learning</option>
+                    <option>other</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
