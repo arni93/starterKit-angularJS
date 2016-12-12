@@ -3,35 +3,35 @@
     "id": 1,
     "title": "zrob zakupy1",
     "category": "home",
-    "priority": 10,
+    "priority": "very low",
     "content": "kup kurczaka ryz i warzywa",
     "date": "2016-12-08"
 }, {
     "id": 2,
     "title": "spotkanie w pracy1",
     "category": "job",
-    "priority": 5,
+    "priority": "low",
     "content": "zorganizuj spotkanie z okazji grilla",
     "date": "2016-12-20"
 }, {
     "id": 3,
     "title": "zrob sprawozdanie z fizyki1",
     "category": "learning",
-    "priority": "4",
+    "priority": "medium",
     "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
     "date": "2016-12-12"
 }, {
     "id": 4,
     "title": "zakupy1",
     "category": "shopping",
-    "priority": 10,
+    "priority": "high",
     "content": "kup prezerwatywy",
     "date": "2016-12-08"
 }, {
     "id": 5,
     "title": "urodziny1",
     "category": "home",
-    "priority": "2",
+    "priority": "very high",
     "content": "babcia ma urodziny w weekend",
     "date": "2016-12-09"
 },

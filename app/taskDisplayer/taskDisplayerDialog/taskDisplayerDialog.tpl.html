@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2 align="center">Select date</h2>
+    <div class="row">
+        <div align="center" class="col-md-4 col-md-offset-4">
+            <p class="input-group">
+                <datepicker ng-model="selectedDate" show-weeks="true " class="well well-sm "></datepicker>
+                <p>{{selectedDate}}</p>
+            </p>
+        </div>
+    </div>
+
+    <tabset justified=true>
+        <tab heading="day tasks" select="changeFilter(1)">
+            <h3>Selected day tasks</h3>
+        </tab>
+        <tab heading="week tasks " active="true" select="changeFilter(2)">
+            <h3>Selected week tasks</h3>
+        </tab>
+        <tab heading="month tasks" select="changeFilter(3)">
+            <h3>Selected month tasks</h3>
+        </tab>
+    </tabset>
+
+    <table class="table table-hover ">
+        <thead>
+            <th>title:</th>
+            <th>category:</th>
+            <th>priority:</th>
+            <th>content:</th>
+            <th>date:</th>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="item in data.tasks | filter:taskFilter | orderBy: '-date' as filteredTasks" popover-title={{item.title}}
+                popover={{item.content}} popover-trigger="mouseenter" ng-style="setRowColor(item)">
+                <td>{{item.title}}</td>
+                <td><span data-ng-class="{ 'glyphicon glyphicon-calendar': item.category=='meeting' } "></span>
+                    <span data-ng-class="{ 'glyphicon glyphicon-bell': item.category=='reminder' } "></span>
+                    <span data-ng-class="{ 'glyphicon glyphicon-shopping-cart': item.category=='shopping' } "></span>
+                    <span data-ng-class="{ 'glyphicon glyphicon-home': item.category=='home' } "></span>
+                    <span data-ng-class="{ 'glyphicon glyphicon-usd': item.category=='job' } "></span>
+                    <span data-ng-class="{ 'glyphicon glyphicon-book': item.category=='learning' } "></span>
+                    <span data-ng-class="{ 'glyphicon glyphicon-question-sign': item.category=='other' } "></span>{{item.category}}</td>
+                <td>{{item.priority}}</td>
+                <td>{{item.content}}</td>
+                <td>{{item.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

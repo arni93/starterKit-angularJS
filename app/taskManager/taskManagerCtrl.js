@@ -40,7 +40,6 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function ($scope
     }
 
     $scope.selectRow = function (index) {
-        console.log(index);
         $scope.selectedRowIndex = index;
     }
 
