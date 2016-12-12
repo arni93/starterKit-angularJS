@@ -44,7 +44,7 @@
     "id": 6,
     "title": "zrob zakupy2",
     "category": "shopping",
-    "priority": "10",
+    "priority": "very high",
     "content": "kup kurczaka ryz i warzywa",
     "date": "2016-12-08",
     "status" : "not started"
@@ -52,7 +52,7 @@
     "id": 7,
     "title": "spotkanie w pracy2",
     "category": "reminder",
-    "priority": "5",
+    "priority": "medium",
     "content": "zorganizuj spotkanie z okazji grilla",
     "date": "2016-12-20",
     "status" : "not started"
@@ -60,7 +60,7 @@
     "id": 8,
     "title": "zrob sprawozdanie z fizyki2",
     "category": "learning",
-    "priority": "4",
+    "priority": "medium",
     "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
     "date": "2016-12-12",
     "status" : "not started"
@@ -68,7 +68,7 @@
     "id": 9,
     "title": "zakupy2",
     "category": "shopping",
-    "priority": "10",
+    "priority": "very high",
     "content": "kup prezerwatywy",
     "date": "2016-12-08",
     "status" : "not started"
@@ -76,7 +76,7 @@
     "id": 10,
     "title": "urodziny2",
     "category": "other",
-    "priority": "2",
+    "priority": "low",
     "content": "babcia ma urodziny w weekend",
     "date": "2016-12-09",
     "status" : "not started"
@@ -85,7 +85,7 @@
     "id": 11,
     "title": "zrob zakupy3",
     "category": "home",
-    "priority": "10",
+    "priority": "high",
     "content": "kup kurczaka ryz i warzywa",
     "date": "2016-12-08",
     "status" : "not started"
@@ -93,7 +93,7 @@
     "id": 12,
     "title": "spotkanie w pracy3",
     "category": "job",
-    "priority": "5",
+    "priority": "medium",
     "content": "zorganizuj spotkanie z okazji grilla",
     "date": "2016-12-20",
     "status" : "not started"
@@ -101,7 +101,7 @@
     "id": 13,
     "title": "zrob sprawozdanie z fizyki3",
     "category": "learning",
-    "priority": "4",
+    "priority": "low",
     "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
     "date": "2016-12-12",
     "status" : "not started"
@@ -109,7 +109,7 @@
     "id": 14,
     "title": "zakupy3",
     "category": "other",
-    "priority": "10",
+    "priority": "very high",
     "content": "kup prezerwatywy",
     "date": "2016-12-08",
     "status" : "not started"
@@ -117,7 +117,7 @@
     "id": 15,
     "title": "urodziny3",
     "category": "home",
-    "priority": "2",
+    "priority": "very low",
     "content": "babcia ma urodziny w weekend",
     "date": "2016-12-09",
     "status" : "not started"
@@ -125,7 +125,7 @@
     "id": 16,
     "title": "zrob zakupy4",
     "category": "shopping",
-    "priority": "10",
+    "priority": "very high",
     "content": "kup kurczaka ryz i warzywa",
     "date": "2016-12-08",
     "status" : "not started"
@@ -133,7 +133,7 @@
     "id": 17,
     "title": "spotkanie w pracy4",
     "category": "job",
-    "priority": "5",
+    "priority": "medium",
     "content": "zorganizuj spotkanie z okazji grilla",
     "date": "2016-12-20",
     "status" : "not started"
@@ -141,7 +141,7 @@
     "id": 18,
     "title": "zrob sprawozdanie z fizyki4",
     "category": "learning",
-    "priority": "4",
+    "priority": "medium",
     "content": "glupie sprawozdanie z termodynamiki, od chuj wykresow w excelu, ja pierdole :(((",
     "date": "2016-12-12",
     "status" : "not started"
@@ -149,7 +149,7 @@
     "id": 19,
     "title": "zakupy4",
     "category": "home",
-    "priority": "10",
+    "priority": "very high",
     "content": "kup prezerwatywy",
     "date": "2016-12-08",
     "status" : "not started"
@@ -157,7 +157,7 @@
     "id": 20,
     "title": "urodziny4",
     "category": "reminder",
-    "priority": "2",
+    "priority": "very low",
     "content": "babcia ma urodziny w weekend",
     "date": "2016-12-09",
     "status" : "not started"
