@@ -51,17 +51,12 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function ($scope
             resolve: {
                 newTask: function () {
                     var date, day, month, year, dateString;
-                    date = new Date();
-                    year = date.getFullYear();
-                    month = date.getMonth() + 1;
-                    day = date.getDate();
-                    dateString = '' + year + '-' + month + '-' + day;
                     return {
                         "title": "insert title",
                         "category": "insert category",
                         "priority": 1,
                         "content": "insert content",
-                        "date": dateString
+                        "date": new Date()
                     }
                 }
             }

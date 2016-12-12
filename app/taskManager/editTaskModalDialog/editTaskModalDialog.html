@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="selectPriority">Select list:</label>
+                    <label for="selectPriority">priority:</label>
                     <select id="selectPriority" class="form-control" name="PriorityList" ng-model="data.editedTask.priority">
                     <option>Very low</option>
                     <option>Low</option>
@@ -56,15 +56,7 @@
                         </span>
                     </div>
                 </div>
-
             </form>
-
-
-            <p>Title: {{data.editedTask.title}}</p>
-            <p>Category: {{data.editedTask.category}}</p>
-            <p>Priority: {{data.editedTask.priority}}</p>
-            <p>Content: {{data.editedTask.content}}</p>
-            <p>Date: {{data.editedTask.date}}</p>
         </div>
         <div class="modal-footer ">
             <button class="btn btn-primary" data-ng-click="ok()">OK</button>

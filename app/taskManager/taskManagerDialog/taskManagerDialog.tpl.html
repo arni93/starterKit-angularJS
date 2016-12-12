@@ -2,7 +2,7 @@
 <html>
 
 <body>
-    <h2>Your task manager</h2>
+    <h1 align="center">Your task manager</h1>
 
     <div class="row">
         <div class="col-sm-2 text-left">
@@ -23,17 +23,17 @@
             <th>date:</th>
         </thead>
         <tbody>
-            <!--<tr data-ng-repeat="item in filteredTasks || data.tasks | filter:search">-->
             <tr data-ng-repeat="item in data.tasks | filter:search | orderBy:'-date' as filteredTasks" ng-if="($index >= (currentPage-1)*itemsPerPage) && ($index < currentPage*itemsPerPage)"
                 data-ng-click="selectRow($index)" data-ng-class="{'active': selectedRowIndex === $index}" data-ng-dblclick="editSelectedTask($index)">
                 <td>{{item.title}}</td>
                 <td><span data-ng-class="{'glyphicon glyphicon-calendar': item.category == 'meeting'}"></span>
                     <span data-ng-class="{'glyphicon glyphicon-bell': item.category == 'reminder'}"></span>
-                    <span data-ng-class="{'glyphicon glyphicon-shopping-cart': item.category == 'shopping'}"></span> 
+                    <span data-ng-class="{'glyphicon glyphicon-shopping-cart': item.category == 'shopping'}"></span>
                     <span data-ng-class="{'glyphicon glyphicon-home': item.category == 'home'}"></span>
                     <span data-ng-class="{'glyphicon glyphicon-usd': item.category == 'job'}"></span>
                     <span data-ng-class="{'glyphicon glyphicon-book': item.category == 'learning'}"></span>
-                    <span data-ng-class="{'glyphicon glyphicon-question-sign': item.category == 'other'}"></span>{{item.category}}</td>
+                    <span data-ng-class="{'glyphicon glyphicon-question-sign': item.category == 'other'}"></span>
+                </td>
                 <td>{{item.priority}}</td>
                 <td>{{item.content}}</td>
                 <td>{{item.date}}</td>

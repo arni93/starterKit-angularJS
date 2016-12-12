@@ -7,7 +7,6 @@
         <div align="center" class="col-md-4 col-md-offset-4">
             <p class="input-group">
                 <datepicker ng-model="selectedDate" show-weeks="true " class="well well-sm "></datepicker>
-                <p>{{selectedDate}}</p>
             </p>
         </div>
     </div>
@@ -29,8 +28,8 @@
             <th>title:</th>
             <th>category:</th>
             <th>priority:</th>
-            <th>content:</th>
             <th>date:</th>
+            <th>status:</th>
         </thead>
         <tbody>
             <tr data-ng-repeat="item in data.tasks | filter:taskFilter | orderBy: '-date' as filteredTasks" popover-title='title: {{item.title}}'
@@ -43,10 +42,10 @@
                     <span data-ng-class="{ 'glyphicon glyphicon-home': item.category=='home' } "></span>
                     <span data-ng-class="{ 'glyphicon glyphicon-usd': item.category=='job' } "></span>
                     <span data-ng-class="{ 'glyphicon glyphicon-book': item.category=='learning' } "></span>
-                    <span data-ng-class="{ 'glyphicon glyphicon-question-sign': item.category=='other' } "></span>{{item.category}}</td>
+                    <span data-ng-class="{ 'glyphicon glyphicon-question-sign': item.category=='other' } "></span></td>
                 <td>{{item.priority}}</td>
-                <td>{{item.content}}</td>
                 <td>{{item.date}}</td>
+                <td>{{item.status}}</td>
             </tr>
         </tbody>
     </table>
