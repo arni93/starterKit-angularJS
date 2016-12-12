@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>detailed task info</title>
+</head>
+
+<body>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 align="center" class="modal-title">detailed task info</h2>
+        </div>
+        <div class="modal-body">
+            <label>Title:</label>
+            <p>{{data.taskInfo.title}}</p>
+            <label>Category:</label>
+            <p>
+                <span data-ng-class="{ 'glyphicon glyphicon-calendar': data.taskInfo.category=='meeting' } "></span>
+                <span data-ng-class="{ 'glyphicon glyphicon-bell': data.taskInfo.category=='reminder' } "></span>
+                <span data-ng-class="{ 'glyphicon glyphicon-shopping-cart': data.taskInfo.category=='shopping' } "></span>
+                <span data-ng-class="{ 'glyphicon glyphicon-home': data.taskInfo.category=='home' } "></span>
+                <span data-ng-class="{ 'glyphicon glyphicon-usd': data.taskInfo.category=='job' } "></span>
+                <span data-ng-class="{ 'glyphicon glyphicon-book': data.taskInfo.category=='learning' } "></span>
+                <span data-ng-class="{ 'glyphicon glyphicon-question-sign': data.taskInfo.category=='other' } "></span> {{data.taskInfo.category}}
+            </p>
+            <label>Priority:</label>
+            <p>{{data.taskInfo.priority}}</p>
+            <label>Content:</label>
+            <p>{{data.taskInfo.content}}</p>
+            <label>Date:</label>
+            <p>{{data.taskInfo.date}}</p>
+            <div class="form-inline">
+                <label for="selectStatus">status: </label>
+                <select id="selectStatus" class="form-control" name="statusList" ng-model="data.taskInfo.status">
+                    <option>not started</option>
+                    <option>in progress</option>
+                    <option>cancelled</option>
+                    <option>done</option>
+            </select>
+            </div>
+            <p>{{data.taskInfo.status}}</p>
+            <div class="modal-footer ">
+                <button class="btn btn-primary" data-ng-click="ok()">OK</button>
+            </div>
+        </div>
+    </div>
+</body>

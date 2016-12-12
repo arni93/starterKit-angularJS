@@ -33,8 +33,9 @@
             <th>date:</th>
         </thead>
         <tbody>
-            <tr data-ng-repeat="item in data.tasks | filter:taskFilter | orderBy: '-date' as filteredTasks" popover-title={{item.title}}
-                popover={{item.content}} popover-trigger="mouseenter" ng-style="setRowColor(item)">
+            <tr data-ng-repeat="item in data.tasks | filter:taskFilter | orderBy: '-date' as filteredTasks" popover-title='title: {{item.title}}'
+                popover='content: {{item.content}}' popover-trigger="mouseenter" popover-popup-delay="500" ng-style="setRowColor(item)"
+                data-ng-click="showDetailedInfo(item)">
                 <td>{{item.title}}</td>
                 <td><span data-ng-class="{ 'glyphicon glyphicon-calendar': item.category=='meeting' } "></span>
                     <span data-ng-class="{ 'glyphicon glyphicon-bell': item.category=='reminder' } "></span>

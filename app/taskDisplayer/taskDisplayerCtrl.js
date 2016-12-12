@@ -69,40 +69,69 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($sc
     $scope.setRowColor = function(task) {
         if (task.priority.toLowerCase() == "very low") {
             return {
-                color: "green"
+                "background-color": "palegreen"
             };
         }
         if (task.priority.toLowerCase() == "low") {
             return {
-                color: "blue"
+                "background-color": "green"
             };
         }
         if (task.priority.toLowerCase() == "medium") {
             return {
-                color: "gold"
+                "background-color": "gold"
             };
         }
         if (task.priority.toLowerCase() == "high") {
             return {
-                color: "orange"
+                "background-color": "orange"
             };
         }
         if (task.priority.toLowerCase() == "very high") {
             return {
-                color: "red"
+                "background-color": "red"
             };
         }
-
     };
+    $scope.showDetailedInfo = function(task){
+        var modalInstance = $modal.open({
+            templateUrl: 'taskDisplayer/taskDisplayerDialog/detailedTaskInfoDialog.html',
+            controller: 'displayTaskCtrl',
+            size: 'lg',
+            resolve: {
+                displayedTask: function () {
+                    var date, day, month, year, dateString;
+                    dateString = '' + year + '-' + month + '-' + day;
+                    return {
+                        "id": task.id,
+                        "title": task.title,
+                        "category": task.category,
+                        "priority": task.priority,
+                        "content": task.content,
+                        "date": task.date,
+                        "status" : task.status
+                    };
+                }
+            }
+        });
+        modalInstance.result.then(function (data) {
+            for (var i = 0; i <  $scope.data.tasks.length; i++ ){
+                if ( $scope.data.tasks[i].id == data.id){
+                    $scope.data.tasks[i].status = data.status;
+                    break;
+                }
+            }
+        })
+    }
 
     angular.copy(tasks.data, $scope.data.tasks);
 
 }).controller('displayTaskCtrl', function($scope, $modalInstance, displayedTask) {
     'use strict';
     $scope.data = {
-        displayedTask: {}
+        taskInfo: {}
     };
-    angular.copy(displayedTask, $scope.data.displayedTask);
+    angular.copy(displayedTask, $scope.data.taskInfo);
 
     $scope.open = function($event) {
         $event.preventDefault();
@@ -112,6 +141,6 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($sc
 
 
     $scope.ok = function() {
-        $modalInstance.close($scope.data.displayedTask);
+        $modalInstance.close($scope.data.taskInfo);
     }
 })
