@@ -1,7 +1,18 @@
-angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($scope, $http, $modal, tasks) {
+angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($scope, $http, $modal, tasks) {
     'use strict';
-    var dayFilter, weekFilter, monthFilter, result, taskDate;
-    dayFilter = function(task) {
+    var dayFilter, weekFilter, monthFilter, result, taskDate, loadDataFromServer;
+    loadDataFromServer = function () {
+        $http({
+            "method": 'GET',
+            "url": "http://localhost:8090/rest/tasks/all",
+            "headers": { 'Content-Type': 'application/json' }
+        }).then(function successCallback(response) {
+            $scope.data.tasks = response.data;
+        }, function errorCallback(response) {
+            alert("Server is not working Get all request!")
+        });
+    }
+    dayFilter = function (task) {
         var selectedDay, selectedMonth, selectedYear;
         selectedDay = $scope.selectedDate.getDate();
         selectedMonth = $scope.selectedDate.getMonth();
@@ -14,7 +25,7 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($sc
         }
         return result;
     };
-    weekFilter = function(task) {
+    weekFilter = function (task) {
         var selectedDayOfWeek, daysDistanceUp, daysDistanceDown, distance, result, taskDate, taskDateDays, selectedDateDays;
         taskDate = new Date(task.date);
         selectedDayOfWeek = $scope.selectedDate.getDay();
@@ -36,7 +47,7 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($sc
         }
         return result;
     };
-    monthFilter = function(task) {
+    monthFilter = function (task) {
         var selectedMonth, selectedYear, taskDate;
         taskDate = new Date(task.date);
         selectedMonth = $scope.selectedDate.getMonth();
@@ -47,15 +58,14 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($sc
         }
         return result;
     };
-
-
     $scope.data = {
         tasks: []
     };
+
     $scope.selectedDate = new Date();
     $scope.taskFilter === undefined;
 
-    $scope.changeFilter = function(filterNr) {
+    $scope.changeFilter = function (filterNr) {
         if (filterNr == 1) {
             $scope.taskFilter = dayFilter;
         }
@@ -66,7 +76,7 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($sc
             $scope.taskFilter = monthFilter;
         }
     };
-    $scope.setRowColor = function(task) {
+    $scope.setRowColor = function (task) {
         if (task.priority.toLowerCase() == "very low") {
             return {
                 "background-color": "palegreen"
@@ -93,15 +103,13 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($sc
             };
         }
     };
-    $scope.showDetailedInfo = function(task){
+    $scope.showDetailedInfo = function (task) {
         var modalInstance = $modal.open({
             templateUrl: 'taskDisplayer/taskDisplayerDialog/detailedTaskInfoDialog.html',
             controller: 'displayTaskCtrl',
             size: 'lg',
             resolve: {
                 displayedTask: function () {
-                    var date, day, month, year, dateString;
-                    dateString = '' + year + '-' + month + '-' + day;
                     return {
                         "id": task.id,
                         "title": task.title,
@@ -109,38 +117,57 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($sc
                         "priority": task.priority,
                         "content": task.content,
                         "date": task.date,
-                        "status" : task.status
+                        "status": task.status
                     };
                 }
             }
+
         });
         modalInstance.result.then(function (data) {
-            for (var i = 0; i <  $scope.data.tasks.length; i++ ){
-                if ( $scope.data.tasks[i].id == data.id){
-                    $scope.data.tasks[i].status = data.status;
-                    break;
-                }
-            }
+            var day, month, year, dateString;
+            year = data.date.getFullYear();
+            month = data.date.getMonth() + 1;
+            day = data.date.getDate();
+            dateString = '' + year + '-' + month + '-' + day;
+            data.date = dateString;
+            $http({
+                "method": "POST",
+                "url": "http://localhost:8090/rest/tasks/updated",
+                "data": {
+                    "id": data.id,
+                    "title": data.title,
+                    "content": data.content,
+                    "category": data.category,
+                    "priority": data.priority,
+                    "date": data.date,
+                    "status": data.status
+                },
+                "headers": { 'Content-Type': 'application/json' }
+            }).then(function successCallback(response) {
+                loadDataFromServer();
+            }, function errorCallback(response) {
+                alert("Server is not working! Update request")
+            });
         })
     }
 
     angular.copy(tasks.data, $scope.data.tasks);
 
-}).controller('displayTaskCtrl', function($scope, $modalInstance, displayedTask) {
+}).controller('displayTaskCtrl', function ($scope, $modalInstance, displayedTask) {
     'use strict';
     $scope.data = {
         taskInfo: {}
     };
+    $scope.statusList = ['not started', 'in progress', 'cancelled', 'done'];
     angular.copy(displayedTask, $scope.data.taskInfo);
 
-    $scope.open = function($event) {
+    $scope.open = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();
         $scope.opened = true;
     };
 
-
-    $scope.ok = function() {
+    $scope.ok = function () {
         $modalInstance.close($scope.data.taskInfo);
     }
 })

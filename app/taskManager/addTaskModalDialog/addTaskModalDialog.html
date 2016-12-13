@@ -13,54 +13,45 @@
         </div>
         <div class="modal-body">
             <form name="form.add">
-                <div class="form-group">
+                <div class="form-group" data-ng-class="{'has-error bg-danger' : form.add.title.$invalid}">
                     <label for="title">title: </label>
-                    <input id="title" type="text" name="Title" class="form-control" ng-model="data.newTask.title">
+                    <input id="title" type="text" name="title" class="form-control" ng-model="data.newTask.title" data-ng-required="true" >
                 </div>
-                <div class="form-group">
+                <div class="form-group" data-ng-class="{'has-error bg-danger' : form.add.categoryList.$invalid}">
                     <label for="selectCategory">category: </label>
-                    <select id="selectCategory" class="form-control" name="categoryList" ng-model="data.newTask.category">
-                    <option>meeting</option>
-                    <option>reminder</option>
-                    <option>shopping</option>
-                    <option>home</option>
-                    <option>job</option>
-                    <option>learning</option>
-                    <option selected="selected">other</option>
+                    <select id="selectCategory" class="form-control" ng-init="data.newTask.category = categories[6]" ng-options="opt for opt in categories"
+                        name="categoryList" ng-model="data.newTask.category" data-ng-required="true">
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" data-ng-class="{'has-error bg-danger' : form.add.priorityList.$invalid}">
                     <label for="selectPriority">priority:</label>
-                    <select id="selectPriority" class="form-control" name="PriorityList" ng-model="data.newTask.priority">
-                    <option selected>very low</option>
-                    <option>low</option>
-                    <option>medium</option>
-                    <option>high</option>
-                    <option>very high</option>
+                    <select id="selectPriority" class="form-control" name="priorityList" ng-model="data.newTask.priority" ng-init="data.newTask.priority = priorities[0]"
+                        ng-options="priority for priority in priorities" data-ng-required="true">
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="contentInput">content:</label>
-                    <textarea class="form-control" type="text" rows="5" id="contentInput" ng-model="data.newTask.content"></textarea>
+                <div class=" form-group" data-ng-class="{'has-error bg-danger' : form.add.content.$invalid}">
+                    <label for="contentInput ">content:</label>
+                    <textarea name="content" class="form-control " type="text " rows="5 " id="contentInput " ng-model="data.newTask.content" data-ng-required="true"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="dateInput">date:</label>
+                <div class="form-group" data-ng-class="{'has-error bg-danger' : form.add.date.$invalid}">
+                    <label for="dateInput ">date:</label>
                     <div class="input-group date">
-                        <input id="dateInput" type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="data.newTask.date" is-open="opened"
-                        />
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        <input name="date" id="dateInput " type="text " class="form-control " datepicker-popup="yyyy-MM-dd
+                        " ng-model="data.newTask.date " is-open="opened " data-ng-required="true" />
+                        <span class="input-group-btn ">
+                            <button type="button " class="btn btn-default " ng-click="open($event) "><i class="glyphicon
+                        glyphicon-calendar " > </i></button>
                         </span>
                     </div>
                 </div>
-                
+
             </form>
         </div>
         <div class="modal-footer ">
-            <button class="btn btn-primary" data-ng-click="ok()">OK</button>
+            <button class="btn btn-primary " data-ng-click="ok() " ng-disabled="form.add.$invalid ">OK</button>
         </div>
     </div>
 </body>

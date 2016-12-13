@@ -13,7 +13,7 @@ angular.module('app.taskManager', ['ngRoute', 'app.taskManager.templates', 'ui.b
                     }).then(function successCallback(response) {
                         return response;
                     }, function errorCallback(response) {
-                        alert("Server is not working!")
+                        alert("Server is not working Get all request!")
                         return {
 
                         }

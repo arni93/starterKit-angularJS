@@ -23,7 +23,7 @@
             <th>date:</th>
         </thead>
         <tbody>
-            <tr data-ng-repeat="item in data.tasks | filter:search | orderBy:'-date' as filteredTasks" ng-if="($index >= (currentPage-1)*itemsPerPage) && ($index < currentPage*itemsPerPage)"
+            <tr data-ng-repeat="item in data.tasks | filter:search | orderBy:'-creationTimestamp' as filteredTasks" ng-if="($index >= (currentPage-1)*itemsPerPage) && ($index < currentPage*itemsPerPage)"
                 data-ng-click="selectRow($index)" data-ng-class="{'active': selectedRowIndex === $index}" data-ng-dblclick="editSelectedTask($index)">
                 <td>{{item.title}}</td>
                 <td><span data-ng-class="{'glyphicon glyphicon-calendar': item.category == 'meeting'}"></span>

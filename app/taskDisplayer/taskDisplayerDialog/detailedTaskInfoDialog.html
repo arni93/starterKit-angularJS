@@ -32,11 +32,7 @@
             <p>{{data.taskInfo.date}}</p>
             <div class="form-inline">
                 <label for="selectStatus">status: </label>
-                <select id="selectStatus" class="form-control" name="statusList" ng-model="data.taskInfo.status">
-                    <option>not started</option>
-                    <option>in progress</option>
-                    <option>cancelled</option>
-                    <option>done</option>
+                <select id="selectStatus" class="form-control" name="statusList" ng-model="data.taskInfo.status" ng-options="status for status in statusList">
             </select>
             </div>
             <p>{{data.taskInfo.status}}</p>

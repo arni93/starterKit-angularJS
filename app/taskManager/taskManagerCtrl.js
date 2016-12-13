@@ -1,5 +1,18 @@
-angular.module('app.taskManager').controller('taskManagerCtrl', function($scope, $http, $modal, tasks) {
+angular.module('app.taskManager').controller('taskManagerCtrl', function ($scope, $http, $modal, tasks) {
     'use strict';
+    var loadDataFromServer;
+    loadDataFromServer = function () {
+        $http({
+            "method": 'GET',
+            "url": "http://localhost:8090/rest/tasks/all",
+            "headers": { 'Content-Type': 'application/json' }
+        }).then(function successCallback(response) {
+            $scope.data.tasks = response.data;
+        }, function errorCallback(response) {
+            alert("Server is not working Get all request!")
+        });
+    }
+
     $scope.data = {
         tasks: []
     };
@@ -9,7 +22,7 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
     $scope.filteredTasks = null;
     angular.copy(tasks.data, $scope.data.tasks);
 
-    $scope.search = function(item) {
+    $scope.search = function (item) {
         if ($scope.searchExpression == "") {
             return true;
         }
@@ -39,29 +52,29 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
         return false;
     }
 
-    $scope.selectRow = function(index) {
+    $scope.selectRow = function (index) {
         $scope.selectedRowIndex = index;
     }
 
-    $scope.addTask = function() {
+    $scope.addTask = function () {
         var modalInstance = $modal.open({
             templateUrl: 'taskManager/addTaskModalDialog/addTaskModalDialog.html',
             controller: 'addTaskCtrl',
             size: 'lg',
             resolve: {
-                newTask: function() {
+                newTask: function () {
                     var date, day, month, year, dateString;
                     return {
-                        "title": "insert title",
-                        "category": "insert category",
-                        "priority": 1,
-                        "content": "insert content",
+                        "title": "",
+                        "category": "",
+                        "priority": "",
+                        "content": "",
                         "date": new Date()
                     }
                 }
             }
         });
-        modalInstance.result.then(function(data) {
+        modalInstance.result.then(function (data) {
             var day, month, year, dateString;
             year = data.date.getFullYear();
             month = data.date.getMonth() + 1;
@@ -82,20 +95,19 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
                 },
                 "headers": { 'Content-Type': 'application/json' }
             }).then(function successCallback(response) {
-                $scope.data.tasks.push(data);
-                window.location.reload(true);
+                loadDataFromServer();
             }, function errorCallback(response) {
                 alert("Server is not working! Add request")
             })
         })
     };
-    $scope.editSelectedTask = function(taskIndex) {
+    $scope.editSelectedTask = function (taskIndex) {
         var modalInstance = $modal.open({
             templateUrl: 'taskManager/editTaskModalDialog/editTaskModalDialog.html',
             controller: 'editTaskCtrl',
             size: 'lg',
             resolve: {
-                editedTask: function() {
+                editedTask: function () {
                     var task = $scope.filteredTasks[taskIndex];
                     return {
                         "id": task.id,
@@ -104,12 +116,12 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
                         "priority": task.priority,
                         "content": task.content,
                         "date": new Date(task.date),
-                        "status" : task.status
+                        "status": task.status
                     }
                 }
             }
         });
-        modalInstance.result.then(function(data) {
+        modalInstance.result.then(function (data) {
             var day, month, year, dateString;
             year = data.date.getFullYear();
             month = data.date.getMonth() + 1;
@@ -130,18 +142,13 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
                 },
                 "headers": { 'Content-Type': 'application/json' }
             }).then(function successCallback(response) {
-                for (var i = 0; i < $scope.data.tasks.length; i++) {
-                    if ($scope.data.tasks[i].id == data.id) {
-                        $scope.data.tasks[i] = data;
-                        break;
-                    }
-                }
+                loadDataFromServer();
             }, function errorCallback(response) {
-                alert("Server is not working! Add request")
+                alert("Server is not working! Update request")
             });
         })
     }
-    $scope.removeSelectedTask = function(taskIndex) {
+    $scope.removeSelectedTask = function (taskIndex) {
         var indexToRemove, data;
         indexToRemove = -1;
         data = $scope.filteredTasks[taskIndex];
@@ -159,54 +166,49 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
             },
             "headers": { 'Content-Type': 'application/json' }
         }).then(function successCallback(response) {
-            for (var i = 0; i < $scope.data.tasks.length; i++) {
-                if ($scope.data.tasks[i].id == data.id) {
-                    indexToRemove = i;
-                    break;
-                }
-            }
-            if (indexToRemove >= 0) {
-                $scope.data.tasks.splice(indexToRemove, 1);
-                $scope.selectedRowIndex = undefined;
-            }
+            loadDataFromServer();
         }, function errorCallback(response) {
             alert("Server is not working! Add request")
         });
     }
 
-}).controller('addTaskCtrl', function($scope, $modalInstance, newTask) {
+}).controller('addTaskCtrl', function ($scope, $modalInstance, newTask) {
     'use strict';
     $scope.data = {
         newTask: {}
     };
+    $scope.categories = ['meeting', 'reminder', 'shopping', 'home', 'job', 'learning', 'other'];
+    $scope.priorities = ['very low', 'low', 'medium', 'high', 'very high'];
+
     angular.copy(newTask, $scope.data.newTask);
 
-    $scope.open = function($event) {
+    $scope.open = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();
         $scope.opened = true;
     };
 
-
-    $scope.ok = function() {
+    $scope.ok = function () {
         $modalInstance.close($scope.data.newTask);
     }
 
-}).controller('editTaskCtrl', function($scope, $modalInstance, editedTask) {
+}).controller('editTaskCtrl', function ($scope, $modalInstance, editedTask) {
     'use strict';
     $scope.data = {
         editedTask: {}
     };
+    $scope.categories = ['meeting', 'reminder', 'shopping', 'home', 'job', 'learning', 'other'];
+    $scope.priorities = ['very low', 'low', 'medium', 'high', 'very high'];
+
     angular.copy(editedTask, $scope.data.editedTask);
 
-    $scope.open = function($event) {
+    $scope.open = function ($event) {
         $event.preventDefault();
         $event.stopPropagation();
         $scope.opened = true;
     };
 
-
-    $scope.ok = function() {
+    $scope.ok = function () {
         $modalInstance.close($scope.data.editedTask);
     }
 })
