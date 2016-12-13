@@ -68,22 +68,22 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
             day = data.date.getDate();
             dateString = '' + year + '-' + month + '-' + day;
             data.date = dateString;
-            //$scope.data.tasks.push(data);
             $http({
                 "method": "POST",
                 "url": "http://localhost:8090/rest/tasks/new",
-                "data" : {
-                    "id" : data.id,
-                    "title" : data.title,
-                    "content" : data.content,
-                    "category" : data.category,
-                    "priority" : data.priority,
-                    "date" : data.date,
-                    "status" : "not started"
+                "data": {
+                    "id": data.id,
+                    "title": data.title,
+                    "content": data.content,
+                    "category": data.category,
+                    "priority": data.priority,
+                    "date": data.date,
+                    "status": "not started"
                 },
                 "headers": { 'Content-Type': 'application/json' }
             }).then(function successCallback(response) {
-                
+                $scope.data.tasks.push(data);
+                window.location.reload(true);
             }, function errorCallback(response) {
                 alert("Server is not working! Add request")
             })
@@ -103,7 +103,8 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
                         "category": task.category,
                         "priority": task.priority,
                         "content": task.content,
-                        "date": new Date(task.date)
+                        "date": new Date(task.date),
+                        "status" : task.status
                     }
                 }
             }
@@ -115,28 +116,62 @@ angular.module('app.taskManager').controller('taskManagerCtrl', function($scope,
             day = data.date.getDate();
             dateString = '' + year + '-' + month + '-' + day;
             data.date = dateString;
-            for (var i = 0; i < $scope.data.tasks.length; i++) {
-                if ($scope.data.tasks[i].id == data.id) {
-                    $scope.data.tasks[i] = data;
-                    break;
+            $http({
+                "method": "POST",
+                "url": "http://localhost:8090/rest/tasks/updated",
+                "data": {
+                    "id": data.id,
+                    "title": data.title,
+                    "content": data.content,
+                    "category": data.category,
+                    "priority": data.priority,
+                    "date": data.date,
+                    "status": data.status
+                },
+                "headers": { 'Content-Type': 'application/json' }
+            }).then(function successCallback(response) {
+                for (var i = 0; i < $scope.data.tasks.length; i++) {
+                    if ($scope.data.tasks[i].id == data.id) {
+                        $scope.data.tasks[i] = data;
+                        break;
+                    }
                 }
-            }
+            }, function errorCallback(response) {
+                alert("Server is not working! Add request")
+            });
         })
     }
     $scope.removeSelectedTask = function(taskIndex) {
         var indexToRemove, data;
         indexToRemove = -1;
         data = $scope.filteredTasks[taskIndex];
-        for (var i = 0; i < $scope.data.tasks.length; i++) {
-            if ($scope.data.tasks[i].id == data.id) {
-                indexToRemove = i;
-                break;
+        $http({
+            "method": "POST",
+            "url": "http://localhost:8090/rest/tasks/deleted",
+            "data": {
+                "id": data.id,
+                "title": data.title,
+                "content": data.content,
+                "category": data.category,
+                "priority": data.priority,
+                "date": data.date,
+                "status": data.status
+            },
+            "headers": { 'Content-Type': 'application/json' }
+        }).then(function successCallback(response) {
+            for (var i = 0; i < $scope.data.tasks.length; i++) {
+                if ($scope.data.tasks[i].id == data.id) {
+                    indexToRemove = i;
+                    break;
+                }
             }
-        }
-        if (indexToRemove >= 0) {
-            $scope.data.tasks.splice(indexToRemove, 1);
-            $scope.selectedRowIndex = undefined;
-        }
+            if (indexToRemove >= 0) {
+                $scope.data.tasks.splice(indexToRemove, 1);
+                $scope.selectedRowIndex = undefined;
+            }
+        }, function errorCallback(response) {
+            alert("Server is not working! Add request")
+        });
     }
 
 }).controller('addTaskCtrl', function($scope, $modalInstance, newTask) {
