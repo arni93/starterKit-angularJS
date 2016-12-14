@@ -1,4 +1,4 @@
-angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($scope, $http, $modal, tasks, timeFilters, taskServerCommunicationService, taskDisplayerToolKitService) {
+angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($scope, $http, $modal, tasks, timeFilters, taskDisplayerServerCommunication, taskDisplayerToolkitService) {
     'use strict';
     var dayFilter, weekFilter, monthFilter, result, taskDate, loadDataFromServer;
 
@@ -30,7 +30,7 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($s
             $scope.taskFilter = monthFilter;
         }
     };
-    $scope.setRowColor = taskDisplayerToolKitService.getRowColor;
+    $scope.setRowColor = taskDisplayerToolkitService.getRowColor;
 
     $scope.showDetailedInfo = function (task) {
         var modalInstance = $modal.open({
@@ -53,7 +53,7 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($s
 
         });
         modalInstance.result.then(function (data) {
-            taskServerCommunicationService.postChangedData($http, data, $scope.data);
+            taskDisplayerServerCommunication.postChangedData($http, data, $scope.data);
         })
     }
     angular.copy(tasks.data, $scope.data.tasks);

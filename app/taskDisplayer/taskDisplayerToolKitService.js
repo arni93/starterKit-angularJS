@@ -1,4 +1,4 @@
-angular.module('app.taskDisplayer').service('taskDisplayerToolKitService', function () {
+angular.module('app.taskDisplayer').service('taskDisplayerToolkitService', function () {
     "use strict";
     this.getRowColor = function (task) {
         if (task.priority.toLowerCase() == "very low") {

@@ -1,4 +1,4 @@
-angular.module('app.taskDisplayer').service('taskServerCommunicationService', function() {
+angular.module('app.taskDisplayer').service('taskDisplayerServerCommunication', function() {
     'use strict';
     var load = function(http, referenceObject) {
         var resultData = {};
@@ -34,5 +34,4 @@ angular.module('app.taskDisplayer').service('taskServerCommunicationService', fu
             alert("Server is not working! Update request")
         });
     }
-
 })
