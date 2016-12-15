@@ -1,14 +1,14 @@
-angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($scope, $http, $modal, tasks, timeFilters, taskDisplayerServerCommunication, taskDisplayerToolkitService) {
+angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function($scope, $http, $modal, tasks, timeFilters, taskDisplayerServerCommunication, taskDisplayerToolkitService) {
     'use strict';
     var dayFilter, weekFilter, monthFilter, result, taskDate, loadDataFromServer;
 
-    dayFilter = function (task) {
+    dayFilter = function(task) {
         return timeFilters.dayFilter($scope.selectedDate, new Date(task.date));
     }
-    weekFilter = function (task) {
+    weekFilter = function(task) {
         return timeFilters.weekFilter($scope.selectedDate, new Date(task.date));
     };
-    monthFilter = function (task) {
+    monthFilter = function(task) {
         return timeFilters.monthFilter($scope.selectedDate, new Date(task.date));
     };
 
@@ -17,9 +17,9 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($s
     };
 
     $scope.selectedDate = new Date();
-    $scope.taskFilter === undefined;
+    $scope.taskFilter = function(task) { return false; };
 
-    $scope.changeFilter = function (filterNr) {
+    $scope.changeFilter = function(filterNr) {
         if (filterNr == 1) {
             $scope.taskFilter = dayFilter;
         }
@@ -32,13 +32,13 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($s
     };
     $scope.setRowColor = taskDisplayerToolkitService.getRowColor;
 
-    $scope.showDetailedInfo = function (task) {
+    $scope.showDetailedInfo = function(task) {
         var modalInstance = $modal.open({
             templateUrl: 'taskDisplayer/taskDisplayerDialog/detailedTaskInfoDialog.html',
             controller: 'displayTaskCtrl',
             size: 'lg',
             resolve: {
-                displayedTask: function () {
+                displayedTask: function() {
                     return {
                         "id": task.id,
                         "title": task.title,
@@ -52,7 +52,7 @@ angular.module('app.taskDisplayer').controller('taskDisplayerCtrl', function ($s
             }
 
         });
-        modalInstance.result.then(function (data) {
+        modalInstance.result.then(function(data) {
             taskDisplayerServerCommunication.postChangedData($http, data, $scope.data);
         })
     }

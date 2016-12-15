@@ -16,4 +16,6 @@ describe('\'app\' module', function () {
     it('sets the \'Hashbang\' mode', function () {
         expect(locationProvider.html5Mode).toHaveBeenCalledWith(false);
     });
+    
+        
 });
